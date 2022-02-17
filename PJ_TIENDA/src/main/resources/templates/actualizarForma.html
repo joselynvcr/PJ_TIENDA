@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+    <head>
+       <title>Ópticas UPN | Amamos tus ojos | Compra ahora en UPN.com.pe</title>
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"/>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet" href="#"/>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+                
+                
+        <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- comment -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"/>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#tablaDT').DataTable();
+            });
+        </script>
+    </head>
+    <body>
+        
+        <header th:replace="fragments :: encabezado"></header>
+        
+        <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+		<div class="container">
+            <!---728x90--->
+		<section class="container__testimonials">
+                            <h2 class="section__title">Actualizar Forma</h2>                            
+                </section>
+                </div>
+        </section> 
+        
+
+        <main class="main">
+            <div class="container">
+                <section class="container"> 
+                    <div class="">  
+                        <form th:action="@{/formaUpd}" method="POST" th:object="${forma}">
+                            <input type="hidden" name="f_id" th:field="${forma.f_id}"/>
+                                                        
+                            <div class="form-group">
+                                <label for="">Forma</label>
+                                <input type="text" name="f_nombre" th:value="${forma.f_nombre}" class="form-control" placeholder="Ingresa la forma del producto">
+                                <span th:if="${#fields.hasErrors('f_nombre')}" th:errors="*{f_nombre}"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="">Descripcion</label>
+                                <input type="text" name="f_descripcion" th:value="${forma.f_descripcion}" class="form-control" placeholder="Ingresar la forma del producto">
+                                <span th:if="${#fields.hasErrors('f_descripcion')}" th:errors="*{f_descripcion}"></span>
+                            </div>
+                            
+                            <button type="submit" value="Actualizar" class="btn btn-primary">Actualizar</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        
+        <p><p>
+        
+        <footer th:replace="fragments :: pie"></footer>
+        <!-- SLIDER Y MENU-->
+          
+        <script type="javascript" th:src="@{/JS/slider.js}"></script>
+        <script src="JS/menu.js"></script>
+    </body>
+</html>

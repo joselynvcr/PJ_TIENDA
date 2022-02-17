@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+    <head>
+         <title>Ópticas UPN | Amamos tus ojos | Compra ahora en UPN.com.pe</title>
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"/>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+                
+                
+        <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- comment -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"/>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#tablaDT').DataTable();
+            });
+        </script>
+
+    </head>
+    <body>     
+                
+         <header th:replace="fragments :: encabezado"></header>
+        <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+		<div class="container">
+            <!---728x90--->
+		<section class="container__testimonials">
+                            <h2 class="section__title">Agregar Producto</h2>                            
+                </section>
+                </div>
+        </section>
+        <!--        //formulario bootstrap-->
+        <main class="main">
+            <div class="container">
+                <section class="container"> 
+                    <div class="">
+                        <!--//formulario bootstrap-->
+                        <form th:action="@{/productoIns}" method="POST" th:object="${producto}">
+                            <div class="form-group">
+                                <label for="">Nombre Del Producto</label>
+                                <input type="text" th:field="*{pro_nombre}" class="form-control" placeholder="Ingresar Nombre del Producto">
+                                <span th:if="${#fields.hasErrors('pro_nombre')}" th:errors="*{pro_nombre}"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Precio</label>
+                                <input type="number" th:field="*{pro_precio}" class="form-control" placeholder="Ingresar Precio">
+                                <span th:if="${#fields.hasErrors('pro_precio')}" th:errors="*{pro_precio}"></span>    
+                            </div>
+                            <div class="form-group">
+                                <label for="">Imagen</label>
+                                <input type="text" th:field="*{pro_imagen}" class="form-control" placeholder="Subir Imagen">
+                                <span th:if="${#fields.hasErrors('pro_imagen')}" th:errors="*{pro_imagen}"></span>     
+                            </div>
+                            <div class="form-group">
+                                <label for="">Stock</label>
+                                <input type="number" th:field="*{pro_stock}" class="form-control" placeholder="Ingresar Stock">
+                                <span th:if="${#fields.hasErrors('pro_stock')}" th:errors="*{pro_stock}"></span> 
+                            </div>
+                            <div class="form-group">
+                                <label for="">Descripcion</label>
+                                <textarea th:field="*{pro_descripcion}" class="form-control" rows="3" placeholder="Ingresar una descripcion"></textarea>
+                                <span th:if="${#fields.hasErrors('pro_descripcion')}" th:errors="*{pro_descripcion}"></span> 
+                            </div>                              
+                            <div class="form-group">
+                                <label for="">Disponible</label>
+                                <input  type="text" th:field="*{pro_disponible}" class="form-control" placeholder="Ingresar Disponibilidad.">
+                                <span th:if="${#fields.hasErrors('pro_disponible')}" th:errors="*{pro_disponible}"></span> 
+                            </div>
+                            
+                            <div class="form-group">
+                                <form class="form-inline">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Marca</label>
+                                <select th:field="*{marca_id}" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required>
+                                  <option th:each="st : ${marca}" th:value="${st.m_id}" th:text="${st.m_nombre}"></option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('marca_id')}" th:errors="*{marca_id}"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <form class="form-inline">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Forma</label>
+                                <select th:field="*{forma_id}" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required>
+                                  <option th:each="st : ${forma}" th:value="${st.f_id}" th:text="${st.f_nombre}"></option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('forma_id')}" th:errors="*{forma_id}"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <form class="form-inline">
+                                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categoria</label>
+                                <select th:field="*{categoria_id}" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required>
+                                  <option th:each="st : ${categoria}" th:value="${st.c_id}" th:text="${st.c_nombre}"></option>
+                                </select>
+                                <span th:if="${#fields.hasErrors('categoria_id')}" th:errors="*{categoria_id}"></span>
+                            </div>
+                            <button type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
+                            
+                        </form>                        
+                    </div>
+                </section>
+                <p></p>
+            </div>
+        </main>
+        
+        <p></p>
+        
+        
+         <footer th:replace="fragments :: pie"></footer>
+          <!-- SLIDER Y MENU-->
+          
+          <script type="javascript" th:src="@{/JS/slider.js}"></script>
+          <script src="JS/menu.js"></script>
+    </body>
+</html>

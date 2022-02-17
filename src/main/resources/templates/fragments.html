@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header  th:fragment="encabezado" class="main-header"><br/>
+            <div class="container container--flex">
+                <div class="main-header__container">
+                    <h1 class="main-header__title">OPTICAS UPN</h1>
+                    <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+                    <nav class="main-nav" id="main-nav">
+                        <ul class="menu">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES OFTALMOLOGICOS</a></li>
+                            <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
+                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="main-header__container">
+                    <span class="main-header__txt">Pedidos</span>
+                    <p class="main-header__txt"><i class="fa-brands fa-whatsapp-square fa-lg "></i> 984787678</p>
+                </div>
+
+                <div class="main-header__container">
+                    <a href="usuarios" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>
+                    <a href="usuarios" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
+                    <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
+                    <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
+                </div>
+
+            </div>
+        </header>
+
+        <header  th:fragment="encabezado2" class="main-header"><br/>
+            <div class="container container--flex">
+                <div class="main-header__container">
+                    <h1 class="main-header__title">OPTICAS UPN</h1>
+                    <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+                    <nav class="main-nav" id="main-nav">
+                        <ul class="menu">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES OFTALMOLOGICOS</a></li>
+                            <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
+                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>
+                            <li class="menu__item"><a th:href="@{/login}" class="menu__link">LOGIN</a></li>
+                            <!--                            <li class="menu__item"><a th:href="@{auth/registro}" class="menu__link">REGISTRO</a></li>-->
+
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="main-header__container">
+                    <span class="main-header__txt">Pedidos</span>
+                    <p class="main-header__txt"><i class="fa-brands fa-whatsapp-square fa-lg "></i> 984787678</p>
+                </div>
+
+                <div class="main-header__container">
+                    <a href="usuarios" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>
+                    <a href="usuarios" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
+                    <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
+                    <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
+                </div>
+
+            </div>
+        </header>
+
+
+        <footer th:fragment="pie" class="main-footer">
+            <div class="footer__section">
+                <h2 class="footer__title">Sobre Nosotros</h2>
+                <p class="footer__txt">Somos Optica Josy, una empresa multinacional, líder en diseño, fabricación y distribución de lentes de moda, deporte y lujo con altos estándares técnicos y estéticos, además de una amplia variedad de marcas. En Latinoamérica tenemos presencia en Chile, Perú, Colombia y Ecuador.</p>
+                <i class="fab fa-twitter fa-lg" ></i>
+                <i class="fab fa-facebook-square fa-lg"></i>
+                <i class="fab fa-instagram fa-lg"></i>
+                <i class="fab fa-tiktok fa-lg"></i>
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Ubicanos :</h2>
+                <p class="footer__txt">Av. Tingo Maria 1122, Cercado de Lima 15083
+                    Lima, Peru</p>
+                <h2 class="footer__title">Contacto</h2>
+                <p class="footer__txt">Telefono: +51 984787678</p>
+                <p class="footer__txt">Email : N00065128@upn.pe</p>
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Acceso Rapido</h2>
+                <a href="" class="footer__link">LENTES OFTALMOLOGICOS</a>
+                <a href="" class="footer__link">LENTES DE SOL</a>
+                <a href="" class="footer__link">LENTES DE CONTACTO</a>
+                <a href="" class="footer__link">REGISTRAR PRODUCTO</a>
+                <a href="" class="footer__link">CONSULTAR VENTAS</a>
+                <a href="" class="footer__link">CONTACTO</a>
+            </div>
+            <div class="footer__section">
+                <h2 class="footer__title">Suscríbete a nuestro newsletter</h2>
+                <p class="footer__txt">Suscribete gratuitamente asi siempre tendras las ultimas actualizaciones de los modelos que nos llegan cada mes.</p>
+                <input type="email" class="footer__input" placeholder="Tu email"/>
+            </div>
+            <p class="copy">© 2022 Goggles. All Rights Reserved | Design by Joselyn Vanessa Calderon Rios - UPN - Veranito - SOWAD </p>
+        </footer>
+
+
+    </body>
+</html>

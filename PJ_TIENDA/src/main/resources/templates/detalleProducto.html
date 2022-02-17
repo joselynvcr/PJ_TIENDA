@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+    <head>
+        <title>TIENDA</title>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1"/> comment 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"/>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#tablaDT').DataTable();
+            });
+        </script>-->
+    </head>
+    <body>
+<!--        <div class="card-body">
+            <h1>Datatables</h1><br/>
+            <button class="btn btn-primary">Nuevo</button><br/><br/>   
+            <table id="tablaDT" class="display">     
+
+                <thead>
+                    <tr>-->
+                       <h1> Detalle Productos</h1>
+                        <p> ID : <span th:text="${dato.pro_id}"></span></p>               
+                        <p> Nombres : <span th:text="${dato.pro_nombre}"></span></p>     
+                        <p> Precio : <span th:text="${dato.pro_precio}"></span></p>     
+                        <p> Imagen : <span th:text="${dato.pro_imagen}"></span></p>
+                        <p> Stock : <span th:text="${dato.pro_stock}"></span></p>
+                        <p> Descripcion : <span th:text="${dato.pro_descripcion}"></span></p>
+                        <p> Disponible : <span th:text="${dato.pro_disponible}"></span></p>
+                        <p> Marca : <span th:text="${dato.marca_id.m_nombre}"></span></p>
+                        <p> Forma : <span th:text="${dato.forma_id.f_nombre}"></span></p><!-- comment -->
+                        <p> Categoria : <span th:text="${dato.categoria_id.c_nombre}"></span></p>
+                        
+                        
+<!--                        <p>Editar : <span th:text="${dato.nombres}"></span></p>
+                        <p>Eliminar : <span th:text="${dato.nombres}"></span></p>-->
+                        
+                        
+<!--                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="st : ${lista}">
+                        <td th:text="${st.pro_id}"></td>   
+                        <td th:text="${st.pro_nombre}"></td>  
+                        <td th:text="${st.pro_precio}"></td>  
+                        <td th:text="${st.pro_imagen}"></td>
+                        <td><button class="btn btn-success">Editar</button></td>
+                        <td><button class="btn btn-danger">Eliminar</button></td>  
+                    </tr>
+                </tbody>   
+            </table>
+        </div>-->
+    </body>
+</html>
