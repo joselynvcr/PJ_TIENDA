@@ -1,5 +1,6 @@
 package com.upn.PJ_TIENDA.entidad;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
@@ -21,10 +22,9 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "venta")
-@XmlRootElement
-public class Venta {
+public class Venta implements Serializable{
 
-//    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "v_id")
@@ -32,7 +32,7 @@ public class Venta {
 
     @NotNull
     @Column(name = "v_fecha")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date v_fecha;
 
     @NotNull
@@ -150,14 +150,14 @@ public class Venta {
         return "Venta{" + "v_id=" + v_id + ", v_fecha=" + v_fecha + ", v_estadoventa=" + v_estadoventa + ", v_usuario_id=" + v_usuario_id + '}';
     }
 
-    @XmlTransient
-    public Collection<DetalleVenta> getDetalleVentaCollection() {
-        return detalleVentaCollection;
-    }
-
-    public void setDetalleVentaCollection(Collection<DetalleVenta> detalleVentaCollection) {
-        this.detalleVentaCollection = detalleVentaCollection;
-    }
+//    @XmlTransient
+//    public Collection<DetalleVenta> getDetalleVentaCollection() {
+//        return detalleVentaCollection;
+//    }
+//
+//    public void setDetalleVentaCollection(Collection<DetalleVenta> detalleVentaCollection) {
+//        this.detalleVentaCollection = detalleVentaCollection;
+//    }
 
    
 }

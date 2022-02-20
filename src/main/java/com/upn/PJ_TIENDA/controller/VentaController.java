@@ -35,9 +35,9 @@ public class VentaController {
         
         System.out.println("nuevaVenta");
 
-        LocalDateTime ldt = LocalDateTime.now();       
-        venta.setV_fecha(Timestamp.valueOf(ldt));//la fecha se captura al instante
-        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar 
+//        LocalDateTime ldt = LocalDateTime.now();       
+//        venta.setV_fecha(Timestamp.valueOf(ldt));//la fecha se captura al instante
+//        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar 
         model.addAttribute("usuario", usuServ.usuariosCliente());
 
         
@@ -54,8 +54,8 @@ public class VentaController {
         model.addAttribute("usuario", usuServ.usuariosCliente());
         
        // LocalDateTime ldt = LocalDateTime.now();
-        venta.setV_fecha(new Date());//la fecha se captura al instante
-        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar      
+//        venta.setV_fecha(new Date());//la fecha se captura al instante
+//        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar      
 
         
         if (result.hasErrors()) {
