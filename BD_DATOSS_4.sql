@@ -1,7 +1,6 @@
 
 use pj_tienda;
 
-
 -- Table: detalle_venta
 CREATE TABLE detalle_venta (
     dt_producto_id int NOT NULL,
@@ -61,6 +60,7 @@ CREATE TABLE usuario (
 	username varchar(100) NOT NULL,
     password varchar(100) NOT NULL,
     u_telefono varchar(50) NOT NULL,
+       u_dni varchar(8) NOT NULL,
     CONSTRAINT usuario_pk PRIMARY KEY (u_id)
 );
 
@@ -73,9 +73,6 @@ CREATE TABLE venta (
     CONSTRAINT venta_pk PRIMARY KEY (v_id)
 );
 
--- Reference: venta_cliente (table: venta)
-/*ALTER TABLE venta ADD CONSTRAINT venta_cliente FOREIGN KEY venta_cliente (cliente_cli_id)
-    REFERENCES cliente (cli_id);*/
 -- Reference: detalle_venta_producto (table: detalle_venta)
 ALTER TABLE detalle_venta ADD CONSTRAINT detalle_venta_producto FOREIGN KEY detalle_venta_producto (dt_producto_id)
     REFERENCES producto (pro_id);
@@ -98,46 +95,6 @@ ALTER TABLE producto ADD CONSTRAINT producto_marca FOREIGN KEY producto_marca (m
 -- Reference: venta_usuario (table: venta)
 ALTER TABLE venta ADD CONSTRAINT venta_usuario FOREIGN KEY venta_usuario (v_usuario_id)
     REFERENCES usuario (u_id);
-
--- End of file.
-
-
-
-select * from producto
-select * from categoria
-select * from forma 
-select * from marca
-
-delete from producto where pro_id=1;
-
-INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descripcion,
- pro_disponible, marca_id, forma_id, categoria_id) VALUES ('ARNETTE', '500.00', 'imagen.jpg', '50', 'lentes unisex', '1','1', '1', '1');
- INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descripcion, pro_disponible, marca_id, forma_id, categoria_id) 
- VALUES('VOGUE', '350.00', 'imagen.jpg', '25', 'lentes unisex','1', '1', '1', '1');
- INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descripcion, pro_disponible, marca_id, forma_id, categoria_id) 
- VALUES('VOGUE', '350.00', 'imagen.jpg', '25', 'lentes unisex','1', '2', '1', '2');
- 
-
-insert into categoria (c_id,c_nombre)
-values (1,'CAT1');
-insert into categoria (c_id,c_nombre)
-values (2,'CAT2');
-insert into marca (m_id,m_nombre)
-values (1,'MARC1');
-insert into marca (m_id,m_nombre)
-values (2,'MARC2');
-insert into forma (f_id,f_nombre,f_descripcion)
-values (1,'FORMA1','DES1');
-insert into forma (f_id,f_nombre,f_descripcion)
-values (2,'FORMA2','DES2');
-
-INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_dni, u_Direccion,u_correo,u_telefono,username,password,u_enabled) 
-VALUES ('nombre1', 'apePa', 'apeMa', '7458121', 'direccion', 'jos@gmail.com','987456121', 'user','$2a$04$COU3.x6fILByeZ0NK3FvTuF1kl/SmK5XIIukxeYYlfkerGwKUWmNS', '1');
- 
- INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_dni, u_Direccion,u_correo,u_telefono,username,password,u_enabled) 
-VALUES ('nombre2', 'apePa', 'apeMa', '7458121', 'direccion', 'jos@gmail.com','987456121', 'admin','$2a$04$COU3.x6fILByeZ0NK3FvTuF1kl/SmK5XIIukxeYYlfkerGwKUWmNS', '1');
- 
- 
 
 
 ::::::::::::::::::::::::::::MARCA::::::::::::::::::::::::::::
@@ -204,7 +161,6 @@ INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descrip
 INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descripcion, pro_disponible, marca_id, forma_id, categoria_id) VALUES('IWEAR GO', '350.00', 'imagen20.jpg', '0', 'Hidrogel de Silicona', '0', '17', '1', '3');
 INSERT INTO producto (pro_nombre, pro_precio, pro_imagen, pro_stock, pro_descripcion, pro_disponible, marca_id, forma_id, categoria_id) VALUES('ACUVUE MOIST', '350.00', 'imagen21.jpg', '0', 'Hidrogel de Silicona', '0', '17', '1', '3');
 
-
 ::::::::::::::::::::::::::::USUARIO::::::::::::::::::::::::::::
 
 INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_Direccion, u_perfil, u_correo, username, password, u_telefono, u_dni) 
@@ -220,11 +176,9 @@ VALUES('Alexandra', 'Torres', 'Chavez', 'Calle 12 Mz S Lot 33 Urb. Los Ceresos -
 INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_Direccion, u_perfil, u_correo, username, password, u_telefono, u_dni) 
 VALUES('Mario', 'Jimenez', 'Quevedo', 'Calle 62 Mz S Lot 77 Urb. Los Claveles - San Luis', 'cliente', 'mario@gmail.com', 'mario', '$2a$10$GVqrKP7wqDPxQwv0ZSrq0urvG4K0upYvKmGne6uQXC/dFD7st4L/O', '984587677', '26859922');
 INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_Direccion, u_perfil, u_correo, username, password, u_telefono, u_dni) 
-VALUES('Erika', 'Aponte', 'Jimenez', 'Calle 24 Mz S Lot 55 Urb. Los Platanos - Callao', 'cliente', 'erika@gmail.com', 'erika', '$2a$10$GVqrKP7wqDPxQwv0ZSrq0urvG4K0upYvKmGne6uQXC/dFD7st4L/O', '984757674', '36859999');
+VALUES('Erika', 'Aponte', 'Jimenez', 'Calle 24 Mz S Lot 55 Urb. Los Platanos - Callao', 'admin', 'erika@gmail.com', 'erika', '$2a$10$GVqrKP7wqDPxQwv0ZSrq0urvG4K0upYvKmGne6uQXC/dFD7st4L/O', '984757674', '36859999');
 INSERT INTO usuario (u_nombres, u_Paterno, u_Materno, u_Direccion, u_perfil, u_correo, username, password, u_telefono, u_dni) 
-VALUES('Bryan', 'Chagua', 'Barrera', 'Calle 56 Mz S Lot 21 Urb. Los Frutales - Callao', 'cliente', 'erika@gmail.com', 'erika', '$2a$10$GVqrKP7wqDPxQwv0ZSrq0urvG4K0upYvKmGne6uQXC/dFD7st4L/O', '984757674', '36859999');
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+VALUES('Bryan', 'Chagua', 'Barrera', 'Calle 56 Mz S Lot 21 Urb. Los Frutales - Callao', 'cliente', 'erika@gmail.com', 'patricia', '$2a$10$GVqrKP7wqDPxQwv0ZSrq0urvG4K0upYvKmGne6uQXC/dFD7st4L/O', '984757674', '36859999');
 
 ::::::::::::::::::::::::::::::::::::::::::::::VENTA::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -235,9 +189,9 @@ INSERT INTO venta(v_fecha, v_estadoventa, v_usuario_id)VALUES('19/02/22', '1', '
 INSERT INTO venta(v_fecha, v_estadoventa, v_usuario_id)VALUES('19/02/22', '1', '5')
 INSERT INTO venta(v_fecha, v_estadoventa, v_usuario_id)VALUES('19/02/22', '1', '6')
 INSERT INTO venta(v_fecha, v_estadoventa, v_usuario_id)VALUES('19-02-22', '0', '7')
+INSERT INTO venta (v_fecha,v_estadoventa,v_usuario_id) VALUES ('2022-02-20 14:56:09.3977406',1,8)
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::DETALLE_VENTA::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 INSERT INTO detalle_venta(dt_producto_id, dt_venta_id, dt_cantidad, dt_precio, dt_total)VALUES('1', '1', '2', '500.00', '1000.00')
 INSERT INTO detalle_venta(dt_producto_id, dt_venta_id, dt_cantidad, dt_precio, dt_total)VALUES('2', '2', '1', '350.00', '350.00')
