@@ -1,16 +1,20 @@
 package com.upn.PJ_TIENDA.entidad;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "usuario")
@@ -231,4 +235,17 @@ public class Usuario implements Serializable {
         return "Usuario{" + "u_id=" + u_id + ", u_nombres=" + u_nombres + ", u_Paterno=" + u_Paterno + ", u_Materno=" + u_Materno + ", u_dni=" + u_dni + ", u_Direccion=" + u_Direccion + ", u_perfil=" + u_perfil + ", u_correo=" + u_correo + ", username=" + username + ", password=" + password + ", u_telefono=" + u_telefono + '}';
     }
     
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "v_usuario_id")
+    private Collection<Venta> ventaCollection;
+
+    @XmlTransient
+    public Collection<Venta> getVentaCollection() {
+        return ventaCollection;
+    }
+
+    public void setVentaCollection(Collection<Venta> ventaCollection) {
+        this.ventaCollection = ventaCollection;
+    }
+
 }

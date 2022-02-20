@@ -15,7 +15,7 @@
         <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
         <!-- Nuestro css-->
-        <link rel="stylesheet" type="text/css" href="inicio" th:href="@{/css/index.css}"/>
+        <link rel="stylesheet" type="text/css" href="index" th:href="@{/css/index.css}"/>
 
     </head>
     <body>
@@ -29,7 +29,7 @@
 
                         <!--                        <div th:if="${param.error}" class="alert alert-danger mb-3">Credenciales incorrectas</div> -->
 
-                        <form class="col-12" th:action="@{/login-post}" method="POST">
+                        <form class="col-12" th:action="@{/login}" method="POST">
                             <p><h1>Iniciar Sesión</h1><p>
                                     <div class="form-group" id="user-group">
                                         <input type="text" class="form-control" placeholder="Nombre de usuario" name="username"/>

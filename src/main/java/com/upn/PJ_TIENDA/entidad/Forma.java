@@ -1,4 +1,3 @@
-
 package com.upn.PJ_TIENDA.entidad;
 
 import java.util.Objects;
@@ -31,12 +30,6 @@ public class Forma {
     @NotBlank(message = "Ingrese la Descripcion, sino como sabemos..?")
     @Column(name = "f_descripcion")
     private String f_descripcion;
-  
-    
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="forma_id")
-    private Set<Producto> producto;
-    
-    //, cascade = {CascadeType.ALL}
     
     public Forma() {
     }
@@ -107,14 +100,18 @@ public class Forma {
         return f_nombre;
     }
 
-     public Set<Producto> getProductos(){
+    
+    
+    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="forma_id")
+    private Set<Producto> producto;
+
+    public Set<Producto> getProductos(){
         return producto;
     }
     public void SetProductos(Set<Producto> productos){
         this.producto = productos;
     }
-
-   
     
     
 }

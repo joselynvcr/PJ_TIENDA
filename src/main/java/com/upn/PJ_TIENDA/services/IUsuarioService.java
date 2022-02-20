@@ -7,6 +7,7 @@ import java.util.List;
 public interface IUsuarioService {
     
     public Usuario findByUsername(String Username);
+    
     public Usuario registrar(Usuario u);
     
      public List<Usuario> usuarioSel() ;
@@ -18,4 +19,5 @@ public interface IUsuarioService {
     public void usuarioUpd(Usuario u) ;
 
     public void usuarioDel(Integer u_id) ;
+    public List<Usuario> usuariosCliente() ;
 }

@@ -1,16 +1,12 @@
 package com.upn.PJ_TIENDA.services;
 
 import com.upn.PJ_TIENDA.entidad.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.upn.PJ_TIENDA.dao.IUsuarioDAO;
+import java.util.ArrayList;
+import java.util.function.Consumer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
@@ -32,12 +28,29 @@ public class UsuariosServiceImpl implements IUsuarioService {
     public Usuario registrar(Usuario u) {
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         return usuarioDao.save(u);
-    }          
-   
+    }
 
     @Override
     public List<Usuario> usuarioSel() {
         return usuarioDao.findAll();
+    }
+
+    @Override
+    public List<Usuario> usuariosCliente() {
+        
+        System.out.println("usuariosCliente");
+        
+        List<Usuario> result = usuarioDao.findAll();
+        List<Usuario> Finalresult = new ArrayList<>();
+
+        for(int i=0; i<result.size(); i++){
+            if ("cliente".equals(result.get(i).getU_perfil())) {
+                Finalresult.add(result.get(i));
+                //System.out.println(songs);                
+            }
+        }
+        return Finalresult;
+        
     }
 
     @Override
@@ -62,8 +75,4 @@ public class UsuariosServiceImpl implements IUsuarioService {
         usuarioDao.deleteById(u_id);
     }
 
-    
-    
-    
-    
 }

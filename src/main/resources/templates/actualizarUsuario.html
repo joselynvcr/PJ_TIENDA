@@ -22,7 +22,7 @@
     </head>
     <body>
 
-        <header th:replace="fragments :: encabezado"></header>
+        <header th:replace="fragments :: encabezado2"></header>
         <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
             <div class="container">
                 <!---728x90--->
@@ -84,9 +84,9 @@
                                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
                             </div>
                             <div class="form-group">
-                                <label for="">Password</label>
-                                <input type="text" th:field="*{u_password}"  class="form-control"  placeholder="Ingresar Password">
-                                <span th:if="${#fields.hasErrors('u_password')}" th:errors="*{u_password}"></span>
+<!--                                <label for="">Password</label>-->
+                                <input type="hidden" th:field="*{password}"  class="form-control"  placeholder="Ingresar Password">
+                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                             </div>
                             <div class="form-group">
                                 <label for="">Telefono</label>
@@ -112,7 +112,5 @@
         <footer th:replace="fragments :: pie"></footer>
         <!-- SLIDER Y MENU-->
 
-        <script type="javascript" th:src="@{/JS/slider.js}"></script>
-        <script src="JS/menu.js"></script>
     </body>
 </html>

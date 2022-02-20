@@ -18,7 +18,7 @@
     </head>
     <body>
 
-        <header th:replace="fragments :: encabezado"></header>
+        <header th:replace="fragments :: encabezado2"></header>
 
         <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
             <div class="container">
@@ -94,41 +94,16 @@
                         </div>                            
                         <br/>  
                         
-                        <a th:href="@{/}" class="btn btn-warning " role="button" aria-pressed="true">Volver</a>	 
+                        <a th:href="@{/iniAdmin}" class="btn btn-warning " role="button" aria-pressed="true">Volver</a>	 
 
                     </div>
 
                 </div>                    
             </div>		
         </section>
-
-
-        <!--        <h1>CRUD PRODUCTO</h1>
-                <a href="productos">Mostrar Productos</a>
-                <a href="nuevoProducto">Agregar Producto</a>    
-                <br/>
-                
-                <h1>CRUD MARCAS</h1>
-                <a href="marcas">Mostrar Marcas</a>
-                <a href="nuevaMarca">Agregar Marca</a>
-                <br/>
-                
-                <h1>CRUD FORMAS</h1>
-                <a href="formas">Mostrar Formas</a>
-                <a href="nuevaForma">Agregar Forma</a>
-                <br/>
-                
-                <h1>CRUD CATEGORIAS</h1>
-                <a href="categorias">Mostrar Categorias</a>
-                <a href="nuevaCategoria">Agregar Categoria</a>
-                <br/>-->
-
-
-
         <footer th:replace="fragments :: pie"></footer>
         <!-- SLIDER Y MENU-->
 
-        <script type="javascript" th:src="@{/JS/slider.js}"></script>
-        <script src="JS/menu.js"></script>
+
     </body>
 </html>

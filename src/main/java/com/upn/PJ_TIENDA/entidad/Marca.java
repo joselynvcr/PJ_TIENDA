@@ -23,13 +23,9 @@ public class Marca {
 
     @NotBlank(message = "Ingrese la Marca, sino como sabemos ..?")  
     @Column(name = "m_nombre")
-    private String m_nombre;
+    private String m_nombre;   
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "marca_id")
-    private Set<Producto> producto;
 
-//    @ManyToOne
-//    @JoinColumn(name="marca_id");
     public Marca() {
     }
 
@@ -86,11 +82,13 @@ public class Marca {
         }
         return true;
     }
+    
+    
+    
+    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "marca_id")
+    private Set<Producto> producto;
 
-//    @Override
-//    public String toString() {
-//        return m_nombre;
-//    }
     public Set<Producto> getProductos() {
         return producto;
     }

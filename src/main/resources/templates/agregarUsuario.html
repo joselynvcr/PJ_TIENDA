@@ -25,7 +25,7 @@
     </head>
     <body>     
 
-        <header th:replace="fragments :: encabezado"></header>
+        <header th:replace="fragments :: encabezado2"></header>
         <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
             <div class="container">
                 <!---728x90--->
@@ -41,7 +41,7 @@
                     <div class="">
                         <!--//formulario bootstrap-->
 <!--                        <form th:action="@{/usuarioIns}" method="POST"  th:object="${usuario}">-->
-                            <form th:action="@{/auth/registro}" method="POST"  th:object="${usuario}">
+                            <form th:action="@{/registro}" method="POST"  th:object="${usuario}">
                             <div class="form-group">
                                 <label for="">Nombres</label>
                                 <input type="text" th:field="*{u_nombres}" class="form-control"  placeholder="Ingresar Nombre del usuario">
@@ -109,7 +109,6 @@
         <footer th:replace="fragments :: pie"></footer>
         <!-- SLIDER Y MENU-->
 
-        <script type="javascript" th:src="@{/JS/slider.js}"></script>
-        <script src="JS/menu.js"></script>
+       
     </body>
 </html>

@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+<!--        index-->
         <header  th:fragment="encabezado" class="main-header"><br/>
             <div class="container container--flex">
                 <div class="main-header__container">
@@ -18,10 +19,7 @@
                             <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
                             <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
                             <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
-                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>
-
-
-
+                            <!--                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>-->
                         </ul>
                     </nav>
                 </div>
@@ -32,15 +30,15 @@
                 </div>
 
                 <div class="main-header__container">
-                    <a href="usuarios" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>
-                    <a href="usuarios" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
+                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>
+                    <a th:href="@{/login?logout}" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
                     <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
                     <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
                 </div>
 
             </div>
         </header>
-
+<!--administrador-->
         <header  th:fragment="encabezado2" class="main-header"><br/>
             <div class="container container--flex">
                 <div class="main-header__container">
@@ -48,12 +46,12 @@
                     <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
                     <nav class="main-nav" id="main-nav">
                         <ul class="menu">
-                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES OFTALMOLOGICOS</a></li>
-                            <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
-                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
-                            <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
+                            <li class="menu__item"><a th:href="@{/iniAdmin}" class="menu__link">LENTES OFTALMOLOGICOS</a></li>
+                            <li class="menu__item"><a th:href="@{/iniAdmin}" class="menu__link">LENTES DE SOL</a></li>
+                            <li class="menu__item"><a th:href="@{/iniAdmin}" class="menu__link">LENTES DE CONTACTO</a></li>
+                            <li class="menu__item"><a th:href="@{/iniAdmin}" class="menu__link">CONTACTO</a></li>                            
                             <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>
-                            <li class="menu__item"><a th:href="@{/login}" class="menu__link">LOGIN</a></li>
+                            <!--                            <li class="menu__item"><a th:href="@{/login}" class="menu__link">LOGIN</a></li>-->
                             <!--                            <li class="menu__item"><a th:href="@{auth/registro}" class="menu__link">REGISTRO</a></li>-->
 
                         </ul>
@@ -66,15 +64,48 @@
                 </div>
 
                 <div class="main-header__container">
-                    <a href="usuarios" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>
-                    <a href="usuarios" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
+<!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
+                    <a th:href="@{/login?logout}" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
                     <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
                     <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
                 </div>
 
             </div>
         </header>
+<!--cliente-->
+        <header  th:fragment="encabezado3" class="main-header"><br/>
+            <div class="container container--flex">
+                <div class="main-header__container">
+                    <h1 class="main-header__title">OPTICAS UPN</h1>
+                    <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+                    <nav class="main-nav" id="main-nav">
+                        <ul class="menu">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES OFTALMOLOGICOS</a></li>
+                            <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
+<!--                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>-->
+                            <!--                            <li class="menu__item"><a th:href="@{/login}" class="menu__link">LOGIN</a></li>-->
+                            <!--                            <li class="menu__item"><a th:href="@{auth/registro}" class="menu__link">REGISTRO</a></li>-->
 
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="main-header__container">
+                    <span class="main-header__txt">Pedidos</span>
+                    <p class="main-header__txt"><i class="fa-brands fa-whatsapp-square fa-lg "></i> 984787678</p>
+                </div>
+
+                <div class="main-header__container">
+<!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
+                    <a th:href="@{/login?logout}" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
+                    <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
+                    <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
+                </div>
+
+            </div>
+        </header>
 
         <footer th:fragment="pie" class="main-footer">
             <div class="footer__section">

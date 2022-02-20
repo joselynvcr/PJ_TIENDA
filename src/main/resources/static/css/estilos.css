@@ -4,8 +4,8 @@
     src: url(fonts/Inconsolata.ttf);
 }
 @font-face{
-    font-family: "Poppins";
-    src: url(fonts/Poppins-Bold.ttf);
+/*    font-family: "Poppins";
+    src: url(fonts/Poppins-Bold.ttf);*/
 }
 
 * {

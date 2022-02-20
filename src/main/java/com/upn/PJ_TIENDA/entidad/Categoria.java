@@ -2,6 +2,7 @@ package com.upn.PJ_TIENDA.entidad;
 
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,22 +12,29 @@ import javax.validation.constraints.NotBlank;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "categoria")
 public class Categoria {
 
+//    @Basic(optional = false)
+//    @NotNull
+//    @Size(min = 1, max = 20)
+//    @Column(name = "c_nombre")
+//    private String c_nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_id")
     private Integer c_id;
 
-    @NotBlank(message = "Ingrese la Categoria, sino como sabemos..?")  
+    @NotBlank(message = "Ingrese la Categoria, sino como sabemos..?")
     @Column(name = "c_nombre")
     private String c_nombre;
-    
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="categoria_id")
-    private Set<Producto> producto;        
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria_id")
+    private Set<Producto> producto;
 
     
     public Categoria(String c_nombre) {
@@ -36,14 +44,14 @@ public class Categoria {
     
     
     public Categoria() {
-        
+
     }
 
     public Categoria(Integer c_id, String c_nombre) {
         this.c_id = c_id;
         this.c_nombre = c_nombre;
     }
-    
+
     
     
     
@@ -59,7 +67,7 @@ public class Categoria {
         this.c_id = c_id;
     }
 
-    public String getC_nombre() {
+      public String getC_nombre() {
         return c_nombre;
     }
 
@@ -67,6 +75,7 @@ public class Categoria {
         this.c_nombre = c_nombre;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -96,13 +105,14 @@ public class Categoria {
     public String toString() {
         return c_nombre;
     }
-    
-    public Set<Producto> getProductos(){
+
+    public Set<Producto> getProductos() {
         return producto;
     }
-    public void SetProductos(Set<Producto> productos){
+
+    public void SetProductos(Set<Producto> productos) {
         this.producto = productos;
     }
-    
 
+   
 }

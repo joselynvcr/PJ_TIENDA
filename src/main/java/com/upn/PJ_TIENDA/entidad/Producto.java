@@ -1,6 +1,7 @@
 package com.upn.PJ_TIENDA.entidad;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "producto")
@@ -120,10 +123,6 @@ public class Producto {
         return true;
     }
 
-//    @Override
-//    public String toString() {
-//        return  pro_id.toString();
-//    }
 
     public Integer getPro_id() {
         return pro_id;
@@ -204,4 +203,25 @@ public class Producto {
     public void setCategoria_id(Categoria categoria_id) {
         this.categoria_id = categoria_id;
     }
+    
+    
+    
+    
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private Collection<DetalleVenta> detalleVentaCollection;
+    
+    
+    
+    @XmlTransient
+    public Collection<DetalleVenta> getDetalleVentaCollection() {
+        return detalleVentaCollection;
+    }
+
+    public void setDetalleVentaCollection(Collection<DetalleVenta> detalleVentaCollection) {
+        this.detalleVentaCollection = detalleVentaCollection;
+    }
+    
+    
+    
 }

@@ -31,14 +31,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/auth/**","/registro/**", "/index", "/css/**", "/js/**", "/img/**").permitAll()
+                .antMatchers("/","/login","/registro/**", "/index", "/css/**", "/js/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
           .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/index",true).failureUrl("/login?error=true")
-                .loginProcessingUrl("/login-post").permitAll()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/index").failureUrl("/login?error=true")
+                //.loginProcessingUrl("/inicio").permitAll()
           .and()
-//                .logout(logout -> logout
-//            .logoutUrl("/cookies/cookielogout")
+//                .formLogin(form->form
+//                .defaultSuccessUrl("/index")
+//                        .loginPage("/login")
+//                        .failureUrl("/login?error=true")    
+//                )                
+                
+                .logout(logout->logout
+            .deleteCookies("dummyCookie"));
 //            .addLogoutHandler((request, response, auth) -> {
 //                for (Cookie cookie : request.getCookies()) {
 //                    String cookieName = cookie.getName();
@@ -47,11 +53,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                    response.addCookie(cookieToDelete);
 //                }
 //            })
-//          );
-                .logout()
-                .logoutUrl("/logout").logoutSuccessUrl("/index");
+ //         );
+//                .logout()
+//                .logoutUrl("/logout").logoutSuccessUrl("/index");
                
         
+                
+                
                 
     }
 

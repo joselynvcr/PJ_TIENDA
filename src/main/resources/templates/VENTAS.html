@@ -23,16 +23,27 @@
         </script>
     </head>
     <body>
-         <header th:replace="fragments :: encabezado2"></header>
+        
+       
+        <header th:replace="fragments :: encabezado"></header>
+        
         <div class="card-body">
-            <h1>Marcas</h1><br/>
-            <a href="nuevaMarca" class="btn btn-primary" role="button" aria-pressed="true">Nuevo</a>
+            <h1>Productos</h1><br/>
+            <a href="nuevoProducto" class="btn btn-primary" role="button" aria-pressed="true">NUEVO</a>
             <br/><br/>   
             <table id="tablaDT" class="display">     
                 <thead>
                     <tr>
                         <th>ID</th>               
-                        <th>Marca</th> 
+                        <th>Nombres</th>     
+                        <th>Precio</th>     
+                        <th>Imagen</th>
+                        <th>Stock</th>
+                        <th>Descripcion</th>
+                        <th>Disponible</th>
+                        <th>Marca</th>                       
+                        <th>Forma</th><!-- comment -->
+                        <th>Categoria</th>
 
                         <th>Update</th>
                         <th>Delete</th>
@@ -40,19 +51,33 @@
                 </thead>
                 <tbody>
                     <tr th:each="st : ${lista}">
-                        <td th:text="${st.m_id}"></td>   
-                        <td th:text="${st.m_nombre}"></td>                        
+                        <td th:text="${st.pro_id}"></td>   
+                        <td th:text="${st.pro_nombre}"></td>  
+                        <td th:text="${st.pro_precio}"></td>  
+                        <td th:text="${st.pro_imagen}"></td>
+                        <td th:text="${st.pro_stock}"></td>
+                        <td th:text="${st.pro_descripcion}"></td>
+                        <td th:text="${st.pro_disponible}"></td><!-- comment -->
+                        <td th:text="${st.marca_id.m_nombre}"></td><!-- comment -->
+                        <td th:text="${st.forma_id.f_nombre}"></td><!-- comment -->
+                        <td th:text="${st.categoria_id.c_nombre}"></td><!-- comment -->
                         <td>                        
-                            <a th:href="@{'actualizarMarca?id=' + ${st.m_id}}" class="btn btn-success" role="button" aria-pressed="true">Actualizar</a>
+                            <a th:href="@{'actualizarProducto?pro_id=' + ${st.pro_id}}" class="btn btn-success" role="button" aria-pressed="true">Actualizar</a>
                         </td>
                         <td>
-                            <a th:href="@{'marcaDel?id=' + ${st.m_id}}" class="btn btn-danger" role="button" aria-pressed="true">Eliminar</a>                        
+                            <a th:href="@{'productoDel?pro_id=' + ${st.pro_id}}" class="btn btn-danger" role="button" aria-pressed="true">Eliminar</a>
+                        
                         </td>  
                     </tr>
                 </tbody>   
             </table>
         </div>
+        
          <footer th:replace="fragments :: pie"></footer>
+          <!-- SLIDER Y MENU-->
+          
+          <script type="javascript" th:src="@{/JS/slider.js}"></script>
+          <script src="JS/menu.js"></script>
+        
     </body>
 </html>
-
