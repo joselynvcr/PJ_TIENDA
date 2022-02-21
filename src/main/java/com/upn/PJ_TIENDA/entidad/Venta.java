@@ -17,33 +17,33 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "venta")
 public class Venta implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "v_id")
     private Integer v_id;
 
+    
     @NotNull
     @Column(name = "v_fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date v_fecha;
 
+    
     @NotNull
     @Column(name = "v_estadoventa")
     private Integer v_estadoventa;
-
     
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})    
     @JoinColumn(name = "v_usuario_id", referencedColumnName = "u_id")
     private Usuario v_usuario_id;
+    
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dt_venta_id")
     private Collection<DetalleVenta> detalleVentaCollection;

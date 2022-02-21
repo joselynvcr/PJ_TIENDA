@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-<!--        index-->
+        <!--        index-->
         <header  th:fragment="encabezado" class="main-header"><br/>
             <div class="container container--flex">
                 <div class="main-header__container">
@@ -38,7 +38,7 @@
 
             </div>
         </header>
-<!--administrador-->
+        <!--administrador-->
         <header  th:fragment="encabezado2" class="main-header"><br/>
             <div class="container container--flex">
                 <div class="main-header__container">
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="main-header__container">
-<!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
+                    <!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
                     <a th:href="@{/login?logout}" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
                     <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
                     <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
@@ -72,7 +72,7 @@
 
             </div>
         </header>
-<!--cliente-->
+        <!--cliente-->
         <header  th:fragment="encabezado3" class="main-header"><br/>
             <div class="container container--flex">
                 <div class="main-header__container">
@@ -84,7 +84,7 @@
                             <li class="menu__item"><a th:href="@{/}"class="menu__link">LENTES DE SOL</a></li>
                             <li class="menu__item"><a th:href="@{/}" class="menu__link">LENTES DE CONTACTO</a></li>
                             <li class="menu__item"><a th:href="@{/}" class="menu__link">CONTACTO</a></li>                            
-<!--                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>-->
+                            <!--                            <li class="menu__item"><a th:href="@{/administrador}" class="menu__link">ADMINISTRACION</a></li>-->
                             <!--                            <li class="menu__item"><a th:href="@{/login}" class="menu__link">LOGIN</a></li>-->
                             <!--                            <li class="menu__item"><a th:href="@{auth/registro}" class="menu__link">REGISTRO</a></li>-->
 
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="main-header__container">
-<!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
+                    <!--                    <a th:href="@{/login}" class="main-header__link"><i class="fas fa-user-circle fa-2x"></i></a>-->
                     <a th:href="@{/login?logout}" class="main-header__link"><i class="fas fas fa-sign-out-alt fa-2x"></i></a>
                     <a href="administrador" class="main-header__btn"> Carrito <i class="fas fa-shopping-cart fa-lg"></i></a>
                     <input type="search" class="main-header__input" placeholder="Buscar"/><i class="fas fa-search"></i>
@@ -141,7 +141,10 @@
             </div>
             <p class="copy">© 2022 Goggles. All Rights Reserved | Design by Joselyn Vanessa Calderon Rios - UPN - Veranito - SOWAD </p>
         </footer>
-
+        <js th:fragment="js" class="main-js">
+            <script th:src="@{/JS/slider.js}"></script>
+            <script th:src="@{/JS/menu.js}"></script>
+        </js>
 
     </body>
 </html>

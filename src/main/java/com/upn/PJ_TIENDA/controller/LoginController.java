@@ -49,6 +49,7 @@ public class LoginController {
         return "registro";
     }
 
+    
     //permite guardar en BD
 //    @PostMapping("/auth/registro")
 //    public String registro(@Valid @ModelAttribute Usuario usuario, BindingResult result, Model model) {

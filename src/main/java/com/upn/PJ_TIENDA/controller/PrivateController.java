@@ -34,6 +34,7 @@ public class PrivateController {
             System.out.println("rol : " +rol);
             session.setAttribute("usuario", usuario);
         }
+        
         if("admin".equals(rol)){  
              System.out.println("rol : " +rol);
             return "inicioAdmin";

@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 
 public class DTOVenta {
+    
     @NotBlank(message="Es obligatorio")
     private String usuarioSel;
 

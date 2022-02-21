@@ -24,4 +24,5 @@ public interface DaoDetalleVenta extends JpaRepository<DetalleVenta, Integer> {
   @Query("SELECT p FROM Producto p JOIN p.ventas v WHERE v.v_id=:ventaId")
   public List<Producto> findByDt_venta_id(@Param("ventaId") int ventaId);
 
+  
 }

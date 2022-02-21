@@ -88,4 +88,5 @@ public class ProductoController {
         prodServ.productoDel(pro_id);
         return "redirect:/productos";
     }
+    
 }

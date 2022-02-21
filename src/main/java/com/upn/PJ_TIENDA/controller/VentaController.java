@@ -56,6 +56,7 @@ public class VentaController {
             System.out.println(result);
             return "agregarVenta";
         }
+        
         System.out.println("insertar.................");
         Venta objVenta = new Venta();
         objVenta.setV_fecha(new Date(System.currentTimeMillis()));
@@ -65,6 +66,7 @@ public class VentaController {
         ventaServ.ventaIns(objVenta);
 
         return "redirect:/ventas";
+        
     }
 
     @RequestMapping("/actualizarVenta")

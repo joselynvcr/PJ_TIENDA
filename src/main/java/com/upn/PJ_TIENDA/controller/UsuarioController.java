@@ -41,8 +41,9 @@ public class UsuarioController {
 
     @GetMapping("/actualizarUsuario")
     public String UsuarioFormUpd(Model model, Integer u_id) {
-        System.out.println("id usuarioformUpd : " + u_id);
+        
         model.addAttribute("usuario", usuServ.usuarioGet(u_id));
+        
         return "actualizarUsuario";
 
     }

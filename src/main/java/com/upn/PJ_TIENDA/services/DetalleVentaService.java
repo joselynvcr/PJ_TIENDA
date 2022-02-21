@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class DetalleVentaService  {   
+public class DetalleVentaService  { 
+    
     @Autowired
     private DaoDetalleVenta objDetalleVenta;
+    
     public List<Producto> listaProductosPorVenta(int ventaId) {
+        
         return objDetalleVenta.findByDt_venta_id(ventaId); //To change body of generated methods, choose Tools | Templates.
     }
 

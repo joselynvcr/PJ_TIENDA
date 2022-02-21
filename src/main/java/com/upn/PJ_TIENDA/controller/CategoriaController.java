@@ -35,6 +35,7 @@ public class CategoriaController {
     
     @PostMapping("/categoriaIns")
     public String categoriaIns(@Valid Categoria categoria, BindingResult result) {
+        
         if (result.hasErrors()) {
             return "agregarCategoria";
         }
@@ -44,21 +45,27 @@ public class CategoriaController {
 
     @GetMapping("/actualizarCategoria")
     public String CategoriaFormUpd(Model model, Integer id) {
+        
         model.addAttribute("categoria", catServ.categoriaGet(id));
+        
         return "actualizarCategoria";
     }
 
     @PostMapping("/categoriaUpd")
     public String categoriaUpd(Model model, Categoria c) {
+        
         catServ.categoriaUpd(c);
+        
         return "redirect:/categorias";
     }
 
     @RequestMapping("/categoriaDel")
     public String categoriaDel(Model model, Integer id) {
+        
         System.out.println("id producto controller : " + id);
         //model.addAttribute("producto", prodServ.productoGet(id));
        catServ.categoriaDel(id);
+       
         return "redirect:/categorias";
     }
 }
