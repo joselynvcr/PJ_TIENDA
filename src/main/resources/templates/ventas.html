@@ -50,7 +50,9 @@
                         <td th:text="${st.v_fecha}"></td>                          
                         <td th:text="${st.v_estadoventa}"></td>
                         <td th:text="${st.v_usuario_id.u_nombres}"></td><!-- comment -->                        
-
+                        <td>                        
+                           <a th:href="@{'productosByVenta?ventaId=' + ${st.v_id}}" class="btn btn-success" role="button" aria-pressed="true">Info</a>
+                        </td>
                         <!--                        <td>                        
                                                     <a th:href="@{'actualizarProducto?pro_id=' + ${st.pro_id}}" class="btn btn-success" role="button" aria-pressed="true">Actualizar</a>
                                                 </td>
