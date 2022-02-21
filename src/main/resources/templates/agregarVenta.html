@@ -40,33 +40,17 @@
                 <section class="container"> 
                     <div class="">
                         <!--//formulario bootstrap-->
-                        <form th:action="@{/ventaIns}" method="POST" th:object="${venta}">
-                            <!--                            <input type="hidden" name="u_id" th:field="${usuario.u_id}"/>-->
-<!--                            <div class="form-group">
-                                                                <label for="">Password</label>
-                                <input type="hidden" th:field="*{v_fecha}"  class="form-control"  placeholder="Ingresar fecha">
-                                    <span th:if="${#fields.hasErrors('v_fecha')}" th:errors="*{v_fecha}"></span>
-                            </div>
-                            <div class="form-group">
-                                                                <label for="">Password</label>
-                                <input type="hidden" th:field="*{v_estadoventa}"  class="form-control"  placeholder="Ingresar estadoventa">
-                                    <span th:if="${#fields.hasErrors('v_estadoventa')}" th:errors="*{v_estadoventa}"></span>
-                            </div>-->
-
-
+                         <form th:action="@{/ventaIns}" method="POST">                          
                             <div class="form-group">
                                 <form class="form-inline">
-                                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Usuario</label>
-                                    <select th:field="*{v_usuario_id}" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" required>
-                                        <option th:each="st:${usuario}" th:value="${st.u_id}" th:text="${st.u_nombres}" ></option>
-                                    </select>
-                                    <span th:if="${#fields.hasErrors('v_usuario_id')}" th:errors="*{v_usuario_id}"></span>
-                                </form>   
+                                <label class="my-1 mr-2" for="id_usuario">Usuarios</label>
+                                <select name='usuarioSel' class="custom-select my-1 mr-sm-2" id="id_usuario" required>
+                                  <option th:each="st : ${usuarios}" th:value="${st.Value}" th:text="${st.Text}"></option>
+                                </select>                               
                             </div>
-
                             <button type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
 
-                        </form>                        
+                        </form>                           
                     </div>
                 </section>
                 <p></p>

@@ -1,11 +1,16 @@
 package com.upn.PJ_TIENDA.controller;
 
+import com.upn.PJ_TIENDA.DTO.DTOSelect;
+import com.upn.PJ_TIENDA.DTO.DTOVenta;
+import com.upn.PJ_TIENDA.entidad.Usuario;
 import com.upn.PJ_TIENDA.entidad.Venta;
 import com.upn.PJ_TIENDA.services.UsuariosServiceImpl;
 import com.upn.PJ_TIENDA.services.VentaServiceImpl;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VentaController {
 
-    @Autowired
+      @Autowired
     VentaServiceImpl ventaServ;
 
     @Autowired
@@ -25,51 +30,45 @@ public class VentaController {
 
     //VAMOS A CREAR LA NAVEGACION     
     @RequestMapping("/ventas")
-    public String ventaSel(Model model) {
+    public String ventaSel(Model model) {   
+        System.out.println(ventaServ.ventaSel());
         model.addAttribute("lista", ventaServ.ventaSel());
         return "ventas";
     }
 
     @RequestMapping("/nuevaVenta")
-    public String ventaForm(Model model, Venta venta) {
-        
-        System.out.println("nuevaVenta");
-
-//        LocalDateTime ldt = LocalDateTime.now();       
-//        venta.setV_fecha(Timestamp.valueOf(ldt));//la fecha se captura al instante
-//        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar 
-        model.addAttribute("usuario", usuServ.usuariosCliente());
-
-        
-        System.out.println(venta.toString());
-
+    public String ventaForm(Model model) {           
+        List<Usuario> lstUsuarios= usuServ.usuariosCliente();
+        List<DTOSelect> lstUsuariosSelect= new ArrayList<DTOSelect>();
+         for (Usuario objUser : lstUsuarios) { 
+             lstUsuariosSelect.add(new DTOSelect(objUser.getU_id().toString(),objUser.getU_nombres()));
+        }
+      
+        model.addAttribute("usuarios", lstUsuariosSelect);
+        //System.out.println(venta.toString());
         return "agregarVenta"; //aqui
     }
 
     @PostMapping("/ventaIns")
-    public String ventaIns(@Valid Venta venta, BindingResult result, Model model) {
+    public String ventaIns(@Valid DTOVenta ventaDTO,BindingResult result) {
 
-        System.out.println("agregarVenta");
-        
-        model.addAttribute("usuario", usuServ.usuariosCliente());
-        
-       // LocalDateTime ldt = LocalDateTime.now();
-//        venta.setV_fecha(new Date());//la fecha se captura al instante
-//        venta.setV_estadoventa(0);//siempre se crea una venta sin pagar      
-
-        
         if (result.hasErrors()) {
-            System.out.println(venta.toString());
-           
+            System.out.println(result);
             return "agregarVenta";
-        }
-
-        ventaServ.ventaIns(venta);
+        }        
+        System.out.println("insertar.................");          
+        Venta objVenta=new Venta();
+        objVenta.setV_fecha(new Date(System.currentTimeMillis()));
+        objVenta.setV_estadoventa(0);   
+        objVenta.setV_usuario_id(usuServ.usuarioGet(Integer.parseInt(ventaDTO.getUsuarioSel())));
+        
+        ventaServ.ventaIns(objVenta);
+        System.out.println("RESULTADO");
+        System.out.println(result);
         
         return "redirect:/ventas";
-
-        
     }
+
 
     
     
