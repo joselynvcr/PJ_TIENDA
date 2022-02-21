@@ -39,7 +39,7 @@
                         <th>Estado Venta</th>     
                         <th>Usuario</th>
 
-<!--                        <th>Update</th>-->
+                        <th>Update</th>
                         <th>Detalle</th>
 
                     </tr>
@@ -50,16 +50,14 @@
                         <td th:text="${st.v_fecha}"></td>                          
                         <td th:text="${st.v_estadoventa}"></td>
                         <td th:text="${st.v_usuario_id.u_nombres}"></td><!-- comment -->                        
+                        
                         <td>                        
-                           <a th:href="@{'productosByVenta?ventaId=' + ${st.v_id}}" class="btn btn-success" role="button" aria-pressed="true">Detalle</a>
+                            <a th:href="@{'actualizarVenta?v_id=' + ${st.v_id}}" class="btn btn-success" role="button" aria-pressed="true">Actualizar</a>
                         </td>
-                        <!--                        <td>                        
-                                                    <a th:href="@{'actualizarProducto?pro_id=' + ${st.pro_id}}" class="btn btn-success" role="button" aria-pressed="true">Actualizar</a>
-                                                </td>
-                                                <td>
-                                                    <a th:href="@{'productoDel?pro_id=' + ${st.pro_id}}" class="btn btn-danger" role="button" aria-pressed="true">Eliminar</a>
-                                                
-                                                </td>  -->
+                        <td>                        
+                            <a th:href="@{'productosByVenta?ventaId=' + ${st.v_id}}" class="btn btn-success" role="button" aria-pressed="true">Detalle</a>
+                        </td>
+
                     </tr>
                 </tbody>   
             </table>
