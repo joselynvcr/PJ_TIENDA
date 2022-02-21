@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VentaController {
 
-      @Autowired
+    @Autowired
     VentaServiceImpl ventaServ;
 
     @Autowired
@@ -30,46 +30,63 @@ public class VentaController {
 
     //VAMOS A CREAR LA NAVEGACION     
     @RequestMapping("/ventas")
-    public String ventaSel(Model model) {   
+    public String ventaSel(Model model) {
         System.out.println(ventaServ.ventaSel());
         model.addAttribute("lista", ventaServ.ventaSel());
         return "ventas";
     }
 
     @RequestMapping("/nuevaVenta")
-    public String ventaForm(Model model) {           
-        List<Usuario> lstUsuarios= usuServ.usuariosCliente();
-        List<DTOSelect> lstUsuariosSelect= new ArrayList<DTOSelect>();
-         for (Usuario objUser : lstUsuarios) { 
-             lstUsuariosSelect.add(new DTOSelect(objUser.getU_id().toString(),objUser.getU_nombres()));
+    public String ventaForm(Model model) {
+        List<Usuario> lstUsuarios = usuServ.usuariosCliente();
+        List<DTOSelect> lstUsuariosSelect = new ArrayList<DTOSelect>();
+        for (Usuario objUser : lstUsuarios) {
+            lstUsuariosSelect.add(new DTOSelect(objUser.getU_id().toString(), objUser.getU_nombres()));
         }
-      
+
         model.addAttribute("usuarios", lstUsuariosSelect);
         //System.out.println(venta.toString());
         return "agregarVenta"; //aqui
     }
 
     @PostMapping("/ventaIns")
-    public String ventaIns(@Valid DTOVenta ventaDTO,BindingResult result) {
+    public String ventaIns(@Valid DTOVenta ventaDTO, BindingResult result) {
 
         if (result.hasErrors()) {
             System.out.println(result);
             return "agregarVenta";
-        }        
-        System.out.println("insertar.................");          
-        Venta objVenta=new Venta();
+        }
+        System.out.println("insertar.................");
+        Venta objVenta = new Venta();
         objVenta.setV_fecha(new Date(System.currentTimeMillis()));
-        objVenta.setV_estadoventa(0);   
+        objVenta.setV_estadoventa(0);
         objVenta.setV_usuario_id(usuServ.usuarioGet(Integer.parseInt(ventaDTO.getUsuarioSel())));
-        
+
         ventaServ.ventaIns(objVenta);
-        System.out.println("RESULTADO");
-        System.out.println(result);
-        
+
         return "redirect:/ventas";
     }
 
+    @RequestMapping("/actualizarVenta")
+    public String ventaFormUpd(Model model, Integer v_id) {
 
-    
+        model.addAttribute("venta", ventaServ.ventaGet(v_id));
+        model.addAttribute("usuario", usuServ.usuariosCliente());
+        return "actualizarVenta";
+
+    }
+
+    @RequestMapping("/ventaUpd")
+    public String ventaUpd(Model model, Venta v) {
+
+        //model.addAttribute("usuario", usuServ.usuariosCliente());
+        v.setV_fecha(new Date(System.currentTimeMillis()));
+
+        System.out.println(v.toString());
+        ventaServ.ventaUpd(v);
+        return "redirect:/ventas";
+
+    }
+
     
 }
