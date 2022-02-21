@@ -39,18 +39,13 @@ public class Venta implements Serializable{
     @Column(name = "v_estadoventa")
     private Integer v_estadoventa;
 
-//     //  @JoinColumn(name = "v_usuario_id", referencedColumnName = "u_id")
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-//    @JoinColumn(name = "v_usuario_id")
-//    private int vusuario_id;
-    
     
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})    
     @JoinColumn(name = "v_usuario_id", referencedColumnName = "u_id")
     private Usuario v_usuario_id;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dt_venta_id")
     private Collection<DetalleVenta> detalleVentaCollection;
 
     

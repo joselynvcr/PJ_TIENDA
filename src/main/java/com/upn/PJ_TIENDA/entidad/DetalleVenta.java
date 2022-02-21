@@ -2,9 +2,12 @@ package com.upn.PJ_TIENDA.entidad;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -28,135 +31,109 @@ import javax.xml.bind.annotation.XmlRootElement;
 //    @NamedQuery(name = "DetalleVenta.findByDtDescuento", query = "SELECT d FROM DetalleVenta d WHERE d.dtDescuento = :dtDescuento"),
 //    @NamedQuery(name = "DetalleVenta.findByDtTotal", query = "SELECT d FROM DetalleVenta d WHERE d.dtTotal = :dtTotal")})
 public class DetalleVenta implements Serializable{
-
-//    private static final long serialVersionUID = 1L;
-//    @EmbeddedId
-//    protected DetalleVentaPK detalleVentaPK;
-    
+ private static final long serialVersionUID = 1L;
     @Id
-    @NotNull
-    @Column(name = "dt_producto_id")
-    private int dt_producto_id;
-    
-    @Id
-    @NotNull
-    @Column(name = "dt_venta_id")
-    private int dt_venta_id;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "dt_id")
+    private Integer dt_id;
+    @Basic(optional = false)
     @NotNull
     @Column(name = "dt_cantidad")
     private int dt_cantidad;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-
+    @Basic(optional = false)
     @NotNull
     @Column(name = "dt_precio")
     private BigDecimal dt_precio;
-   
+    @Basic(optional = false)
     @NotNull
     @Column(name = "dt_total")
     private BigDecimal dt_total;
-
-    @JoinColumn(name = "dt_producto_id", referencedColumnName = "pro_id", insertable = false, updatable = false)
+    @JoinColumn(name = "dt_producto_id", referencedColumnName = "pro_id")
     @ManyToOne(optional = false)
-    private Producto producto;
-
-    @JoinColumn(name = "dt_venta_id", referencedColumnName = "v_id", insertable = false, updatable = false)
+    private Producto dt_producto_id;
+    @JoinColumn(name = "dt_venta_id", referencedColumnName = "v_id")
     @ManyToOne(optional = false)
-    private Venta venta;
+    private Venta dt_venta_id;
 
     public DetalleVenta() {
     }
 
-    public DetalleVenta(int dt_producto_id, int dt_venta_id, int dt_cantidad, BigDecimal dt_precio, BigDecimal dt_total, Producto producto, Venta venta) {
-        this.dt_producto_id = dt_producto_id;
-        this.dt_venta_id = dt_venta_id;
+    public DetalleVenta(Integer dt_id) {
+        this.dt_id = dt_id;
+    }
+
+    public DetalleVenta(Integer dt_id, int dt_cantidad, BigDecimal dt_precio, BigDecimal dt_total) {
+        this.dt_id = dt_id;
         this.dt_cantidad = dt_cantidad;
         this.dt_precio = dt_precio;
         this.dt_total = dt_total;
-        this.producto = producto;
-        this.venta = venta;
     }
 
-    public DetalleVenta(int dt_producto_id) {
-        this.dt_producto_id = dt_producto_id;
+    public Integer getDtId() {
+        return dt_id;
     }
 
-    public int getDt_producto_id() {
-        return dt_producto_id;
+    public void setDtId(Integer dt_id) {
+        this.dt_id = dt_id;
     }
 
-    public void setDt_producto_id(int dt_producto_id) {
-        this.dt_producto_id = dt_producto_id;
-    }
-
-    public int getDt_venta_id() {
-        return dt_venta_id;
-    }
-
-    public void setDt_venta_id(int dt_venta_id) {
-        this.dt_venta_id = dt_venta_id;
-    }
-
-    public int getDt_cantidad() {
+    public int getDtCantidad() {
         return dt_cantidad;
     }
 
-    public void setDt_cantidad(int dt_cantidad) {
+    public void setDtCantidad(int dt_cantidad) {
         this.dt_cantidad = dt_cantidad;
     }
 
-    public BigDecimal getDt_precio() {
+    public BigDecimal getDtPrecio() {
         return dt_precio;
     }
 
-    public void setDt_precio(BigDecimal dt_precio) {
+    public void setDtPrecio(BigDecimal dt_precio) {
         this.dt_precio = dt_precio;
     }
 
-    public BigDecimal getDt_total() {
+    public BigDecimal getDtTotal() {
         return dt_total;
     }
 
-    public void setDt_total(BigDecimal dt_total) {
+    public void setDtTotal(BigDecimal dt_total) {
         this.dt_total = dt_total;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Producto getDtProductoId() {
+        return dt_producto_id;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setDtProductoId(Producto dt_producto_id) {
+        this.dt_producto_id = dt_producto_id;
     }
 
-    public Venta getVenta() {
-        return venta;
+    public Venta getDtVentaId() {
+        return dt_venta_id;
     }
 
-    public void setVenta(Venta venta) {
-        this.venta = venta;
+    public void setDtVentaId(Venta dt_venta_id) {
+        this.dt_venta_id = dt_venta_id;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 61 * hash + this.dt_producto_id;
+        int hash = 0;
+        hash += (dt_id != null ? dt_id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof DetalleVenta)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final DetalleVenta other = (DetalleVenta) obj;
-        if (this.dt_producto_id != other.dt_producto_id) {
+        DetalleVenta other = (DetalleVenta) object;
+        if ((this.dt_id == null && other.dt_id != null) || (this.dt_id != null && !this.dt_id.equals(other.dt_id))) {
             return false;
         }
         return true;
@@ -164,14 +141,6 @@ public class DetalleVenta implements Serializable{
 
     @Override
     public String toString() {
-        return "DetalleVenta{" + "dt_producto_id=" + dt_producto_id + ", dt_venta_id=" + dt_venta_id + ", dt_cantidad=" + dt_cantidad + ", dt_precio=" + dt_precio + ", dt_total=" + dt_total + ", producto=" + producto + ", venta=" + venta + '}';
+        return "com.upn.PJ_TIENDA.entidad.DetalleVenta[ dt_id=" + dt_id + " ]";
     }
-
-   
-
-    
-
-  
-
-    
 }

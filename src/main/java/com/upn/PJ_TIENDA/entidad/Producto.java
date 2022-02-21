@@ -2,14 +2,19 @@ package com.upn.PJ_TIENDA.entidad;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -66,6 +71,14 @@ public class Producto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria_id;
 
+   @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "detalle_venta",
+            joinColumns = @JoinColumn(name = "dt_producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "dt_venta_id")
+            )
+    private Set<Venta> ventas = new HashSet<>();
+        
     public Producto() {
 
     }
@@ -208,20 +221,17 @@ public class Producto {
     
     
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dt_producto_id")
     private Collection<DetalleVenta> detalleVentaCollection;
     
     
-    
-    @XmlTransient
-    public Collection<DetalleVenta> getDetalleVentaCollection() {
+   public Collection<DetalleVenta> getDetalleVentaCollection() {
         return detalleVentaCollection;
     }
 
     public void setDetalleVentaCollection(Collection<DetalleVenta> detalleVentaCollection) {
         this.detalleVentaCollection = detalleVentaCollection;
     }
-    
     
     
 }
