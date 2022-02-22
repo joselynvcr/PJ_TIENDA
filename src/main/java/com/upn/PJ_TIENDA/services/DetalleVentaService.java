@@ -21,5 +21,9 @@ public class DetalleVentaService  {
         
         return objDetalleVenta.findByDt_venta_id(ventaId); //To change body of generated methods, choose Tools | Templates.
     }
-
+//    @Autowired
+//    private DaoDetalleVenta objDetalleVenta;
+//    public List<Producto> listaProductosPorVenta(int ventaId) {
+//        return objDetalleVenta.findByDt_venta_id(ventaId); //To change body of generated methods, choose Tools | Templates.
+//    }
 }
